@@ -1,3 +1,9 @@
+function showHomeScreen() {
+    document.getElementById('loading-screen').style.display = 'none';  // Hide loading screen
+    document.getElementById('home-screen').style.display = 'block';  // Show home screen
+    displayTime();
+}
+
 function showThisPC() {
     document.getElementById('this-pc-details').style.display = 'block';
     document.getElementById('home-screen').style.display = 'none';
