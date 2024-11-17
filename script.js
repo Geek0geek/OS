@@ -1,41 +1,71 @@
-function showHomeScreen() {
-    document.getElementById('loading-screen').style.display = 'none';  // Hide loading screen
-    document.getElementById('home-screen').style.display = 'block';  // Show home screen
-    displayTime();
-}
+document.addEventListener('DOMContentLoaded', () => {
+  // Open and close start menu
+  const startButton = document.getElementById('start-button');
+  const startMenuItems = document.querySelector('.start-menu-items');
+  const overlay = document.getElementById('overlay');
 
-function showThisPC() {
-    document.getElementById('this-pc-details').style.display = 'block';
-    document.getElementById('home-screen').style.display = 'none';
-}
+  startButton.addEventListener('click', () => {
+    startMenuItems.style.display = startMenuItems.style.display === 'block' ? 'none' : 'block';
+    overlay.style.display = startMenuItems.style.display === 'block' ? 'block' : 'none';
+  });
 
-function showAppCreator() {
-    document.getElementById('app-creator-form').style.display = 'block';
-    document.getElementById('home-screen').style.display = 'none';
-}
+  overlay.addEventListener('click', () => {
+    startMenuItems.style.display = 'none';
+    overlay.style.display = 'none';
+  });
 
-function goBack() {
-    document.getElementById('this-pc-details').style.display = 'none';
-    document.getElementById('app-creator-form').style.display = 'none';
-    document.getElementById('home-screen').style.display = 'block';
-}
+  // Window interactions
+  const openNewWindowButton = document.getElementById('open-new-window');
+  const newWindow = document.createElement('div');
+  
+  // Example of dynamically adding a new window
+  openNewWindowButton.addEventListener('click', () => {
+    newWindow.classList.add('window');
+    newWindow.innerHTML = `
+      <div class="window-header">
+        <span>New Window</span>
+        <button class="close-btn">X</button>
+      </div>
+      <div class="window-content">
+        <p>This is a new window!</p>
+      </div>
+    `;
+    document.body.appendChild(newWindow);
 
-function displayTime() {
-    const timeElement = document.getElementById('current-time');
-    setInterval(() => {
-        const now = new Date();
-        timeElement.textContent = now.toLocaleString();
-    }, 1000);
-}
+    // Close window functionality
+    const closeButton = newWindow.querySelector('.close-btn');
+    closeButton.addEventListener('click', () => {
+      newWindow.remove();
+    });
+  });
 
-function createApp() {
-    const appName = document.getElementById('app-name').value;
-    const appUrl = document.getElementById('app-url').value;
-    if (appName && appUrl) {
-        alert('App Created: ' + appName + '\nURL: ' + appUrl);
-    } else {
-        alert('Please fill out both fields.');
-    }
-}
+  // Make windows draggable
+  const allWindows = document.querySelectorAll('.window');
+  allWindows.forEach(window => {
+    makeDraggable(window);
+  });
 
-displayTime();
+  function makeDraggable(windowElement) {
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    windowElement.querySelector('.window-header').addEventListener('mousedown', (e) => {
+      isDragging = true;
+      offsetX = e.clientX - windowElement.offsetLeft;
+      offsetY = e.clientY - windowElement.offsetTop;
+      windowElement.style.zIndex = '101'; // Bring to front when dragged
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        windowElement.style.left = `${e.clientX - offsetX}px`;
+        windowElement.style.top = `${e.clientY - offsetY}px`;
+      }
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      windowElement.style.zIndex = ''; // Reset zIndex
+    });
+  }
+});
