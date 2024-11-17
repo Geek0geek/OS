@@ -1,0 +1,62 @@
+body {
+    background-color: #121212;
+    font-family: Arial, sans-serif;
+    color: white;
+    margin: 0;
+}
+#home-screen {
+    padding: 20px;
+}
+#current-time {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+#desktop-icons {
+    display: flex;
+    flex-wrap: wrap;
+}
+.icon {
+    width: 100px;
+    height: 100px;
+    margin: 15px;
+    background-color: #333;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
+.icon:hover {
+    background-color: #444;
+}
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#this-pc-details, #app-creator-form {
+    background-color: #222;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+input, button {
+    padding: 10px;
+    margin: 10px;
+    background-color: #555;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+button:hover {
+    background-color: #666;
+}
