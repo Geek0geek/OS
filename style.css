@@ -1,54 +1,123 @@
+/* General Page Styles */
 body {
     background-color: #121212;
     font-family: Arial, sans-serif;
     color: white;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
+
+/* Loading Screen */
+.loading-screen {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #121212;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    background-image: url('your-logo.png'); /* Replace with your logo */
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    margin: 20px 0;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Home Screen Styles */
 #home-screen {
     padding: 20px;
+    display: none;
+    flex-grow: 1;
 }
+
 #current-time {
     font-size: 18px;
     margin-bottom: 20px;
 }
+
 #desktop-icons {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 15px;
+    margin-bottom: 50px;
 }
+
 .icon {
     width: 100px;
     height: 100px;
-    margin: 15px;
     background-color: #333;
-    border-radius: 15px;
+    border-radius: 20px;  /* Rounded corners for the icons */
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    cursor: pointer;
     font-size: 14px;
+    cursor: pointer;
     text-align: center;
+    transition: background-color 0.3s ease;
 }
+
 .icon:hover {
     background-color: #444;
 }
+
+/* Taskbar Styles */
 .taskbar {
     position: fixed;
     bottom: 0;
     width: 100%;
     background-color: #333;
     padding: 10px;
-    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: white;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
+
+/* Bottom Left Time */
+#time-footer {
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+}
+
+/* Form and App Creator Styles */
 #this-pc-details, #app-creator-form {
     background-color: #222;
     padding: 20px;
     margin: 10px;
     border-radius: 10px;
 }
+
 input, button {
     padding: 10px;
     margin: 10px;
@@ -57,6 +126,7 @@ input, button {
     border-radius: 5px;
     color: white;
 }
+
 button:hover {
     background-color: #666;
 }
