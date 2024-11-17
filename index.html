@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArhanOS - Home</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="logo"></div>
+        <div class="spinner"></div>
+        <h3>Loading ArhanOS...</h3>
+        <button class="sign-in-button" onclick="showHomeScreen()">Sign In</button>
+    </div>
+
+    <!-- Home Screen -->
     <div id="home-screen">
         <h1>Welcome to ArhanOS</h1>
         <div id="current-time"></div>
@@ -19,11 +28,13 @@
         </div>
     </div>
 
+    <!-- Taskbar -->
     <div class="taskbar">
         <div>ArhanOS</div>
         <div id="time-footer"></div>
     </div>
 
+    <!-- This PC Details -->
     <div id="this-pc-details" style="display:none;">
         <h2>System Information</h2>
         <p><strong>PC Name:</strong> ArhanOS PC</p>
@@ -32,6 +43,7 @@
         <button onclick="goBack()">Back</button>
     </div>
 
+    <!-- App Creator Form -->
     <div id="app-creator-form" style="display:none;">
         <h2>Create an App</h2>
         <label for="app-name">App Name:</label>
@@ -42,6 +54,6 @@
         <button onclick="goBack()">Back</button>
     </div>
 
-    <script src="script.js"></script> <!-- Link to the external JS -->
+    <script src="script.js"></script>
 </body>
 </html>
